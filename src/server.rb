@@ -1,7 +1,5 @@
 require 'socket'
 
-th = []
-
 SERVER_PORT = 8888
 
 server = TCPServer.new('localhost', SERVER_PORT)
