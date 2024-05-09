@@ -6,11 +6,15 @@ server = TCPServer.new('localhost', SERVER_PORT)
 
 puts "Running server..."
 
+client = server.accept
+
 loop do
-  client = server.accept
   message = client.gets
   puts "Client sent: #{message}"
-  client.close
+  if message == "EXIT"
+    client.close
+    break
+  end
 end
 
 server.close
