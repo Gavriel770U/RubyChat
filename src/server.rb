@@ -2,7 +2,7 @@ require 'socket'
 
 SERVER_PORT = 8888
 
-server = TCPServer.new(SERVER_PORT)
+server = TCPServer.new('localhost', SERVER_PORT)
 
 loop do
   client = server.accept
@@ -10,3 +10,5 @@ loop do
   print "#Client sent: {message}"
   client.close
 end
+
+server.close
