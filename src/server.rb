@@ -4,10 +4,12 @@ SERVER_PORT = 8888
 
 server = TCPServer.new('localhost', SERVER_PORT)
 
+puts "Running server..."
+
 loop do
   client = server.accept
-  message = server.gets
-  print "#Client sent: {message}"
+  message = client.gets
+  puts "Client sent: #{message}"
   client.close
 end
 
