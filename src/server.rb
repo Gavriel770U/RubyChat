@@ -6,14 +6,13 @@ server = TCPServer.new('localhost', SERVER_PORT)
 
 puts "Running server..."
 
-client = server.accept
-
 loop do
-  message = client.gets
-  puts "Client sent: #{message}"
-  if message == "EXIT"
-    client.close
-    break
+  Thread.start(server.accept) do |client|
+    message = client.gets
+    puts "Client sent: #{message}"
+    if message == "LOGOUT"
+      client.close
+    end
   end
 end
 

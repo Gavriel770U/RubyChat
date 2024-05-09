@@ -23,8 +23,10 @@ loop do
     $message = gets.chomp
 
     if $message == "LOGOUT"
+      $client.puts $message
       $is_logged = false
     elsif $message == "EXIT"
+      $message = "LOGOUT"
       $client.puts $message
       $is_logged = false
       $is_running = false
