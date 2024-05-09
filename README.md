@@ -1,0 +1,2 @@
+# RubyChat
+Chat in Ruby
