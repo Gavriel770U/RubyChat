@@ -35,5 +35,3 @@ while $is_running
 end
 
 $client.close
-
-# Itay Hamelech!
