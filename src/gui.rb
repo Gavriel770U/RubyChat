@@ -7,9 +7,18 @@ end
 
 root = TkRoot.new(title: "RubyChat", geometry: "600x400")
 
+f1 = TkFrame.new (root) {
+   relief 'sunken'
+   borderwidth 3
+   padx 15
+   pady 20
+   background "white"
+   place('width' => 500, 'height' => 250, 'x' => 50, 'y' => 10)
+}
+
 separator = Tk::Tile::Separator.new(root) do
    orient 'horizontal'
-   place('width' => 400, 'x' => 50, 'y' => 280)
+   place('width' => 500, 'x' => 50, 'y' => 280)
 end
 
 $message_entry = TkEntry.new(root)
