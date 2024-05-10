@@ -7,6 +7,11 @@ end
 
 root = TkRoot.new(title: "RubyChat", geometry: "600x400")
 
+separator = Tk::Tile::Separator.new(root) do
+   orient 'horizontal'
+   place('width' => 400, 'x' => 50, 'y' => 280)
+end
+
 $message_entry = TkEntry.new(root)
 $message_variable = TkVariable.new
 $message_entry.textvariable = $message_variable
