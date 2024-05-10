@@ -8,6 +8,7 @@ def send_message
 end
 
 root = TkRoot.new(title: "RubyChat", geometry: "600x400")
+root.resizable(false, false)
 
 chat_frame = TkFrame.new (root) {
    relief 'sunken'
