@@ -1,3 +1,3 @@
 @echo off
 title GUI
-ruby gui.rb
+ruby chat.rb
