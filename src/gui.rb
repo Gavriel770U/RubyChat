@@ -1,9 +1,8 @@
 require 'tk'
 
 root = TkRoot.new {
-   title "Hello, World!"
+   title "RubyChat"
    geometry "800x600"
 }
-
 
 Tk.mainloop
