@@ -10,6 +10,9 @@ end
 root = TkRoot.new(title: "RubyChat", geometry: "600x400")
 root.resizable(false, false)
 
+
+messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!")
+
 chat_frame = TkFrame.new (root) {
    relief 'sunken'
    borderwidth 3
@@ -18,6 +21,23 @@ chat_frame = TkFrame.new (root) {
    background "white"
    place('width' => 500, 'height' => 250, 'x' => 50, 'y' => 10)
 }
+
+x = 10
+y = 10
+
+messages.each do |message|
+   label = TkLabel.new (chat_frame) do
+      text message
+      foreground "white"
+      font TkFont.new('consolas 12 bold')
+      background "red"
+      borderwidth 2
+   end
+
+   label.place('x' => x, 'y' => y)
+
+   y += 40
+end
 
 separator = Tk::Tile::Separator.new(root) do
    orient 'horizontal'
