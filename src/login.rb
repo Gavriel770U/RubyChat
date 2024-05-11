@@ -25,13 +25,21 @@ class LoginWindow
 
     @username_label.place('x' => 250, 'y' => 120)
 
-    @username_entry = TkEntry.new(@root)
+    @username_entry = TkEntry.new (@root)
     @username_variable = TkVariable.new
     @username_entry.textvariable = @username_variable
     @username_entry.place('height' => 25, 'width' => 200, 'x' => 200, 'y' => 160)
 
+    @submit_button = TkButton.new (@root) do
+      text "Submit"
+      borderwidth 2
+      state "normal"
+      foreground "red"
+      activebackground "red"
+      font TkFont.new('consolas 12 bold')
+    end
 
-
+    @submit_button.place('x' => 260, 'y' => 300)
   end
 
   def run
