@@ -49,7 +49,12 @@ class LoginWindow
 
   def submit
     if @username_variable.value.nil? || @username_variable.value.empty?
-
+      Tk.messageBox(
+        'type'    => "ok",
+        'icon'    => "error",
+        'title'   => "[RubyChat] Error",
+        'message' => "Invalid credentials!"
+      )
       return
     end
 
