@@ -7,11 +7,7 @@ $username = ""
 $is_running = true
 $is_logged = false
 
-loop do
-  if $is_running != true
-    break
-  end
-
+while $is_running
   if $is_logged != true
     print "Enter username: "
     $username = gets.chomp
@@ -23,11 +19,14 @@ loop do
     $message = gets.chomp
 
     if $message == "LOGOUT"
+      $client.puts $message
       $is_logged = false
     elsif $message == "EXIT"
+      $message = "LOGOUT"
       $client.puts $message
       $is_logged = false
       $is_running = false
+      break
     else
       $message = "#{$username}: #{$message}"
       $client.puts $message
@@ -36,5 +35,3 @@ loop do
 end
 
 $client.close
-
-# Itay Hamelech!
