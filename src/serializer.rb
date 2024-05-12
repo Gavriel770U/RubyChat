@@ -20,5 +20,15 @@ class Serializer
 
   end
 
+  def self.serialize_login_response
 
+  end
+
+  def self.serialize_send_message_response
+
+  end
+
+  def self.serialize_logout_response
+
+  end
 end
