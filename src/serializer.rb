@@ -1,7 +1,11 @@
 require 'json'
 
-# request = '{"status": 100, "username": "Gavriel"}'
+#-----------------------------------------------------------------
+# TESTS
+# request = '{"status": %s, "username": "%s"}' % [100, "Gavriel"]
+# puts request
 # j = JSON.parse(request) # can access j['status'], j['username']
+#-----------------------------------------------------------------
 
 class Serializer
   # Converts JSON request or response into bytes data
