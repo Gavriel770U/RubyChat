@@ -4,6 +4,7 @@ require 'json'
 # j = JSON.parse(request) # can access j['status'], j['username']
 
 class Serializer
+  # Converts JSON request or response into bytes data
   def initialize
 
   end
