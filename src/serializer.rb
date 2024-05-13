@@ -14,7 +14,11 @@ class Serializer
   end
 
   def self.serialize_login_request (login_request)
-    puts login_request
+    bytes = Array.new
+    bytes.push([login_request.status].pack('C'))
+    json = '{"status": %s, "username": "%s"}' % [login_request.status, login_request.username]
+    #bytes.push([json.length])
+    #bytes.push
   end
 
   def self.serialize_send_message_request (send_message_request)
