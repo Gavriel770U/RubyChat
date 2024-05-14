@@ -1,3 +1,9 @@
+module RequestCode
+  LOGIN = 10
+  SEND_MESSAGE = 20
+  LOGOUT = 30
+end
+
 LoginRequest = Struct.new(:status, :username) do
 
 end
