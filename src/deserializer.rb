@@ -12,7 +12,7 @@ class Deserializer
 
   def self.deserialize_login_request (bytes_data)
     length = bytes_data[1..8].pack('C*').unpack('Q').first
-    json = JSON.parse([9..9+length-1].pack('C*'))
+    json = JSON.parse(bytes_data[9..9+length-1].pack('C*'))
     lr = LoginRequest.new(json['status'], json['username'])
     return lr
   end
