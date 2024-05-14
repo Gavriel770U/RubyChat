@@ -70,6 +70,3 @@ class Chat
       end
    end
 end
-
-chat = Chat.new()
-chat.run
