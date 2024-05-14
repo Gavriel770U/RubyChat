@@ -38,7 +38,7 @@ class Chat
          place('width' => 500, 'x' => 50, 'y' => 280)
       end
 
-      send_message_command = self.send_message
+      send_message_command = proc { self.send_message }
 
       @message_entry = TkEntry.new(@root)
       @message_variable = TkVariable.new
@@ -57,7 +57,6 @@ class Chat
       end
 
       @send_message_button.place('height' => 25, 'width' => 25, 'x' => 380, 'y' => 300)
-
    end
 
    def run
@@ -71,3 +70,6 @@ class Chat
       end
    end
 end
+
+chat = Chat.new()
+chat.run
