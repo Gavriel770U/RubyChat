@@ -79,9 +79,20 @@ class LoginWindow
     bytes_data.push(*length_bytes)
     bytes_data.push(*message_bytes)
     login_response = Deserializer.deserialize_login_response(bytes_data)
-    puts login_response
 
     @username_variable.value = ""
+
+    if ResponseCode::LOGIN_SUCCESS == login_response['status']
+      self.close
+    else
+      Tk.messageBox(
+        'type'    => "ok",
+        'icon'    => "error",
+        'title'   => "[RubyChat] Error",
+        'message' => "Failed to Login!"
+      )
+      return
+    end
   end
 
   def close
