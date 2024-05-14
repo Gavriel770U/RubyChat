@@ -1,7 +1,12 @@
+require 'socket'
 require 'tk'
+require_relative 'requests'
+require_relative 'serializer'
 
 class LoginWindow
-  def initialize
+  def initialize(socket)
+    @socket = socket
+
     @root = TkRoot.new(title: "[RubyChat] Login", geometry: "600x400")
     @root.resizable(false, false)
     @root.protocol("WM_DELETE_WINDOW", proc { self.close })
@@ -59,6 +64,11 @@ class LoginWindow
     end
 
     puts @username_variable.value
+
+    login_request = LoginRequest.new(RequestCode::LOGIN, @username_variable.value)
+    bytes_data = Serializer.serialize_login_request(login_request)
+    @socket.puts bytes_data
+
     @username_variable.value = ""
   end
 
@@ -67,6 +77,3 @@ class LoginWindow
     @root.destroy
   end
 end
-
-login_window = LoginWindow.new
-login_window.run

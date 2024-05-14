@@ -1,37 +1,29 @@
 require 'socket'
+require_relative 'login'
 
 SERVER_PORT = 8888
 
-$client = TCPSocket.open('localhost', SERVER_PORT)
-$username = ""
-$is_running = true
-$is_logged = false
+class Client
+  def initialize
+    @client_socket = TCPSocket.open('localhost', SERVER_PORT)
+    @username = ""
+    @is_running = false
+    @is_logged = false
+  end
 
-while $is_running
-  if $is_logged != true
-    print "Enter username: "
-    $username = gets.chomp
-    $is_logged = true
-    $message = "Hello from #{$username} :)"
-    $client.puts $message
-  else
-    print "Enter message to send: "
-    $message = gets.chomp
-
-    if $message == "LOGOUT"
-      $client.puts $message
-      $is_logged = false
-    elsif $message == "EXIT"
-      $message = "LOGOUT"
-      $client.puts $message
-      $is_logged = false
-      $is_running = false
-      break
-    else
-      $message = "#{$username}: #{$message}"
-      $client.puts $message
+  def run
+    if !@is_logged
+      login_window = LoginWindow.new(@client_socket)
+      login_window.run()
     end
+
+    #self.close
+  end
+
+  def close
+    @client_socket.close
   end
 end
 
-$client.close
+client = Client.new()
+client.run()
