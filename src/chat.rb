@@ -5,7 +5,7 @@ class Chat
       @root = TkRoot.new(title: "RubyChat", geometry: "600x400")
       @root.resizable(false, false)
 
-      @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!")
+      @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter")
 
       @chat_frame = TkFrame.new (@root) {
          relief 'sunken'
@@ -70,3 +70,6 @@ class Chat
       end
    end
 end
+
+chat = Chat.new
+chat.run
