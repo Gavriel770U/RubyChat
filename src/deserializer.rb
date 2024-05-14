@@ -1,4 +1,6 @@
 require 'json'
+require_relative 'requests'
+require_relative 'responses'
 
 class Deserializer
   # Converts bytes data into JSON,
