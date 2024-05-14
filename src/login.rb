@@ -2,6 +2,7 @@ require 'socket'
 require 'tk'
 require_relative 'requests'
 require_relative 'serializer'
+require_relative 'deserializer'
 
 class LoginWindow
   def initialize(socket)
@@ -69,6 +70,16 @@ class LoginWindow
     bytes_data = Serializer.serialize_login_request(login_request)
 
     @socket.send(bytes_data.pack('C*'), 0)
+
+    bytes_data = Array.new
+    code_byte = @socket.read(1).unpack('C')
+    length_bytes = @socket.read(8).unpack('C*')
+    message_bytes = @socket.read(length_bytes.pack('C*').unpack('Q').first).unpack('C*')
+    bytes_data.push(code_byte)
+    bytes_data.push(*length_bytes)
+    bytes_data.push(*message_bytes)
+    login_response = Deserializer.deserialize_login_response(bytes_data)
+    puts login_response
 
     @username_variable.value = ""
   end

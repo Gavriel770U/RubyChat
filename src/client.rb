@@ -17,6 +17,8 @@ class Client
       login_window.run()
     end
 
+    puts "Logged successfully!!!"
+
     #self.close
   end
 
