@@ -44,7 +44,13 @@ class Serializer
   end
 
   def self.serialize_login_response (login_response)
+    serialized_bytes = Array.new
+    serialized_bytes.push([login_response.status].pack('C'))
+    json = '{"status": %s}' % [login_response.status]
+    serialized_bytes.push(*[json.length].pack('Q').bytes)
+    serialized_bytes.push(*json.bytes)
 
+    return serialized_bytes
   end
 
   def self.serialize_send_message_response (send_message_response)
