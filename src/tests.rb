@@ -2,7 +2,7 @@ require_relative 'requests'
 require_relative 'serializer'
 require_relative 'deserializer'
 
-lr = LoginRequest.new(100, "Gavriel123")
+lr = LoginRequest.new(RequestCode::LOGIN, "Gavriel123")
 print "Original struct: "
 puts lr
 bytes_data = Serializer.serialize_login_request(lr)

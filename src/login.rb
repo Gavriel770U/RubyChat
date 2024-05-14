@@ -67,7 +67,8 @@ class LoginWindow
 
     login_request = LoginRequest.new(RequestCode::LOGIN, @username_variable.value)
     bytes_data = Serializer.serialize_login_request(login_request)
-    @socket.puts bytes_data
+
+    @socket.send(bytes_data.pack('C*'), 0)
 
     @username_variable.value = ""
   end
