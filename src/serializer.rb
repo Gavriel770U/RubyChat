@@ -1,14 +1,11 @@
 require 'json'
-
-#-----------------------------------------------------------------
-# TESTS
-# request = '{"status": %s, "username": "%s"}' % [100, "Gavriel"]
-# puts request
-# j = JSON.parse(request) # can access j['status'], j['username']
-#-----------------------------------------------------------------
+require_relative 'requests'
+require_relative 'responses'
 
 class Serializer
-  # Converts JSON request or response into bytes data
+  # Converts requests and responses into JSON,
+  # and then converts the request or response JSON into bytes data
+
   def initialize
 
   end
