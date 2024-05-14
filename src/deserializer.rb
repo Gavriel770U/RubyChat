@@ -27,7 +27,11 @@ class Deserializer
   end
 
   def self.deserialize_logout_request (bytes_data)
+    length = bytes_data[1..8].pack('C*').unpack('Q').first
+    json = JSON.parse(bytes_data[9..9+length-1].pack('C*'))
+    lr = LogoutRequest.new(json['status'], json['username'])
 
+    return lr
   end
 
   def self.deserialize_login_response (bytes_data)
