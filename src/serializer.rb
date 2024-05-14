@@ -34,7 +34,13 @@ class Serializer
   end
 
   def self.serialize_logout_request (logout_request)
+    serialized_bytes = Array.new
+    serialized_bytes.push([logout_request.status].pack('C'))
+    json = '{"status": %s, "username": "%s"}' % [logout_request.status, logout_request.username]
+    serialized_bytes.push(*[json.length].pack('Q').bytes)
+    serialized_bytes.push(*json.bytes)
 
+    return serialized_bytes
   end
 
   def self.serialize_login_response (login_response)
