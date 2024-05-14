@@ -7,6 +7,10 @@ class Chat
 
       @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter")
 
+      @chat_frame_scroll = TkScrollbar.new {
+
+      }
+
       @chat_frame = TkFrame.new (@root) {
          relief 'sunken'
          borderwidth 3
