@@ -29,7 +29,9 @@ class Chat
       @chat_frame = Tk::Tile::Frame.new (@chat_canvas) { }
       TkcWindow.new(@chat_canvas, 0, 0, :anchor => "nw", :window => @chat_frame)
 
+      # this pady controls the chat frame's padding from top (used also to change height)
       wrapper1.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 10)
+      # this pady controls the chat frame's padding from bottom (used also to change height)
       wrapper2.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 40)
 
       x = 10
@@ -44,7 +46,7 @@ class Chat
             borderwidth 2
          end
 
-         # label.place('x' => x, 'y' => y)
+         label.place('x' => x, 'y' => y)
          label.pack()
 
          y += 80
