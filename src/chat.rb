@@ -34,21 +34,6 @@ class Chat
       # this pady controls the chat frame's padding from bottom (used also to change height)
       wrapper2.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 40)
 
-      y = 0
-
-      @messages.each do |message|
-         label = TkLabel.new (@chat_frame) do
-            text message
-            foreground "white"
-            font TkFont.new('consolas 12 bold')
-            background "red"
-            borderwidth 2
-            pack('side' => 'top', 'anchor' => 'nw', 'padx' => 10, 'pady' => 5)
-         end
-
-
-      end
-
       @separator = Tk::Tile::Separator.new(@root) do
          orient 'horizontal'
          place('width' => 500, 'x' => 50, 'y' => 320)
@@ -85,6 +70,28 @@ class Chat
          @message_variable.value = ""
       end
    end
+
+   def clear_messages
+      @chat_frame.winfo_children().each do |message_label|
+         message_label.destroy()
+      end
+   end
+
+   def render_messages
+      self.clear_messages
+
+      @messages.each do |message|
+         label = TkLabel.new (@chat_frame) do
+            text message
+            foreground "white"
+            font TkFont.new('consolas 12 bold')
+            background "red"
+            borderwidth 2
+            pack('side' => 'top', 'anchor' => 'nw', 'padx' => 10, 'pady' => 5)
+         end
+      end
+   end
+
 end
 
 chat = Chat.new
