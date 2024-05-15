@@ -5,7 +5,7 @@ class Chat
       @root = TkRoot.new(title: "RubyChat", geometry: "600x400")
       @root.resizable(false, false)
 
-      @messages = Array.[]("Hello!", "Heya", "Bye...", "MMMMMMMMMMMMMMMMMMMM", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Even More!", "And more", "Hiii", "Kill Tk", "GitHub cool", "Ruby")
+      @messages = Array.new
 
       wrapper1 = Tk::Tile::Frame.new (@root) {
          relief 'sunken'
