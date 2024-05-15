@@ -91,6 +91,9 @@ class Chat
             pack('side' => 'top', 'anchor' => 'nw', 'padx' => 10, 'pady' => 5)
          end
       end
+
+      @chat_canvas.update
+      @chat_canvas.scrollregion = @chat_canvas.bbox("all")
    end
 
 end
