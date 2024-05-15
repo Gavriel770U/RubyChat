@@ -5,7 +5,7 @@ class Chat
       @root = TkRoot.new(title: "RubyChat", geometry: "600x400")
       @root.resizable(false, false)
 
-      @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Even More!", "And more", "Hiii", "Kill Tk", "GitHub cool", "Ruby")
+      @messages = Array.[]("Hello!", "Heya", "Bye...", "MMMMMMMMMMMMMMMMMMMM", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Even More!", "And more", "Hiii", "Kill Tk", "GitHub cool", "Ruby")
 
       wrapper1 = Tk::Tile::Frame.new (@root) {
          relief 'sunken'
@@ -34,8 +34,7 @@ class Chat
       # this pady controls the chat frame's padding from bottom (used also to change height)
       wrapper2.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 40)
 
-      x = 10
-      y = 10
+      y = 0
 
       @messages.each do |message|
          label = TkLabel.new (@chat_frame) do
@@ -44,12 +43,10 @@ class Chat
             font TkFont.new('consolas 12 bold')
             background "red"
             borderwidth 2
+            pack('side' => 'top', 'anchor' => 'nw', 'padx' => 10, 'pady' => 5)
          end
 
-         label.place('x' => x, 'y' => y)
-         label.pack()
 
-         y += 80
       end
 
       @separator = Tk::Tile::Separator.new(@root) do
