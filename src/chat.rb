@@ -5,23 +5,11 @@ class Chat
       @root = TkRoot.new(title: "RubyChat", geometry: "600x400")
       @root.resizable(false, false)
 
-      @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...")
-
-      # @chat_frame = TkFrame.new (@root) {
-      #    relief 'sunken'
-      #    borderwidth 3
-      #    padx 15
-      #    pady 20
-      #    background "white"
-      #    place('width' => 500, 'height' => 250, 'x' => 50, 'y' => 10)
-      # }
+      @messages = Array.[]("Hello!", "Heya", "Bye...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Ooofff, please don't go!", "I", "Love", "Ruby", "And", "Hate", "Tkinter", "More", "More...", "Even More!", "And more", "Hiii", "Kill Tk", "GitHub cool", "Ruby")
 
       wrapper1 = Tk::Tile::Frame.new (@root) {
          relief 'sunken'
          borderwidth 3
-         #padx 15
-         #pady 20
-         #background "white"
          place('width' => 500, 'height' => 250, 'x' => 50, 'y' => 10)
       }
 
@@ -38,18 +26,11 @@ class Chat
       @chat_canvas.configure(:yscrollcommand => Proc.new {|*args| yscrollbar.set *args })
       @chat_canvas.bind("Configure", Proc.new {@chat_canvas.scrollregion = @chat_canvas.bbox("all")})
 
-      @chat_frame = Tk::Tile::Frame.new (@chat_canvas) {
-         #relief 'sunken'
-         #borderwidth 3
-         #padx 15
-         #pady 20
-         #background "white"
-         #place('width' => 500, 'height' => 250, 'x' => 50, 'y' => 10)
-      }
+      @chat_frame = Tk::Tile::Frame.new (@chat_canvas) { }
       TkcWindow.new(@chat_canvas, 0, 0, :anchor => "nw", :window => @chat_frame)
 
       wrapper1.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 10)
-      wrapper2.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 10)
+      wrapper2.pack(:fill => "both", :expand => "yes", :padx => 10, :pady => 40)
 
       x = 10
       y = 10
@@ -71,7 +52,7 @@ class Chat
 
       @separator = Tk::Tile::Separator.new(@root) do
          orient 'horizontal'
-         place('width' => 500, 'x' => 50, 'y' => 340)
+         place('width' => 500, 'x' => 50, 'y' => 320)
       end
 
       send_message_command = proc { self.send_message }
@@ -79,7 +60,7 @@ class Chat
       @message_entry = TkEntry.new(@root)
       @message_variable = TkVariable.new
       @message_entry.textvariable = @message_variable
-      @message_entry.place('height' => 25, 'width' => 300, 'x' => 50, 'y' => 360)
+      @message_entry.place('height' => 25, 'width' => 300, 'x' => 50, 'y' => 340)
       # Bind Enter key press to send message also
       @message_entry.bind('Return', send_message_command)
 
@@ -92,7 +73,7 @@ class Chat
          command send_message_command
       end
 
-      @send_message_button.place('height' => 25, 'width' => 25, 'x' => 380, 'y' => 360)
+      @send_message_button.place('height' => 25, 'width' => 25, 'x' => 380, 'y' => 340)
    end
 
    def run
