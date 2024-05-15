@@ -66,7 +66,8 @@ class Chat
 
    def send_message
       if !@message_variable.value.nil? && !@message_variable.value.empty?
-         puts @message_variable.value
+         @messages.push(@message_variable.value)
+         self.render_messages
          @message_variable.value = ""
       end
    end
