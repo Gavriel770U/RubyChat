@@ -13,11 +13,12 @@ class SocketUtils
 
   def self.recv(socket)
     bytes_data = Array.new
-    code_byte = client.read(SocketUtilsSettings::CODE_BYTES_SIZE).unpack('C')
-    length_bytes = client.read(SocketUtilsSettings::LENGTH_BYTES_SIZE).unpack('C*')
-    message_bytes = client.read(length_bytes.pack('C*').unpack('Q').first).unpack('C*')
+    code_byte = socket.read(SocketUtilsSettings::CODE_BYTES_SIZE).unpack('C')
+    length_bytes = socket.read(SocketUtilsSettings::LENGTH_BYTES_SIZE).unpack('C*')
+    message_bytes = socket.read(length_bytes.pack('C*').unpack('Q').first).unpack('C*')
     bytes_data.push(code_byte)
     bytes_data.push(*length_bytes)
     bytes_data.push(*message_bytes)
+    return bytes_data
   end
 end
