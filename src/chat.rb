@@ -1,9 +1,13 @@
 require 'tk'
 
 class Chat
-   def initialize
-      @root = TkRoot.new(title: "RubyChat", geometry: "600x400")
+   def initialize (socket)
+      @socket = socket
+
+      @root = TkToplevel.new(title: "RubyChat", geometry: "600x400")
       @root.resizable(false, false)
+      @root.protocol("WM_DELETE_WINDOW", proc { self.close })
+      @root.withdraw
 
       @messages = Array.new
 
@@ -61,7 +65,7 @@ class Chat
    end
 
    def run
-      Tk.mainloop
+      @root.mainloop
    end
 
    def send_message
@@ -96,7 +100,13 @@ class Chat
       @chat_canvas.scrollregion = @chat_canvas.bbox("all")
    end
 
-end
+   def close
+      @root.destroy
+      exit
+   end
 
-chat = Chat.new
-chat.run
+   def show
+      @root.deiconify
+   end
+
+end

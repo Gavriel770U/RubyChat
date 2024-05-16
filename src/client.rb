@@ -1,5 +1,6 @@
 require 'socket'
 require_relative 'login'
+require_relative 'chat'
 
 SERVER_PORT = 8888
 
@@ -12,15 +13,18 @@ class Client
   end
 
   def run
+    chat = Chat.new(@client_socket)
+
     if !@is_logged
-      login_window = LoginWindow.new(@client_socket)
+      login_window = LoginWindow.new(@client_socket, chat)
       login_window.run()
     end
+    login_window.destroy
+    chat.run()
 
-    puts "Logged successfully!!!"
-
-    #self.close
+    self.close
   end
+
 
   def close
     @client_socket.close
