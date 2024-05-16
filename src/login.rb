@@ -5,8 +5,9 @@ require_relative 'serializer'
 require_relative 'deserializer'
 
 class LoginWindow
-  def initialize(socket)
+  def initialize(socket, next_window)
     @socket = socket
+    @next_window = next_window
 
     @root = TkRoot.new(title: "[RubyChat] Login", geometry: "600x400")
     @root.resizable(false, false)
@@ -50,7 +51,7 @@ class LoginWindow
   end
 
   def run
-    Tk.mainloop
+    @root.mainloop
   end
 
   def submit
@@ -91,12 +92,21 @@ class LoginWindow
         'title'   => "[RubyChat] Error",
         'message' => "Failed to Login!"
       )
-      return
     end
   end
 
   def close
     puts "Exit..."
+    if !@next_window.nil?
+      @root.withdraw
+      @next_window.show
+    else
+      @root.destroy
+    end
+  end
+
+  def destroy
     @root.destroy
   end
+
 end
