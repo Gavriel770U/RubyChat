@@ -1,4 +1,9 @@
 require 'tk'
+require_relative 'socket_utils'
+require_relative 'requests'
+require_relative 'responses'
+require_relative 'serializer'
+require_relative 'deserializer'
 
 class Chat
    def initialize (socket)
@@ -70,8 +75,19 @@ class Chat
 
    def send_message
       if !@message_variable.value.nil? && !@message_variable.value.empty?
-         @messages.push(@message_variable.value)
-         self.render_messages
+         send_message_request = SendMessageRequest.new(RequestCode::SEND_MESSAGE, "Not important currently", @message_variable.value)
+         bytes_data = Serializer.serialize_send_message_request(send_message_request)
+         SocketUtils.send(@socket, bytes_data)
+
+         bytes_data = SocketUtils.recv(@socket)
+         send_message_response = Deserializer.deserialize_send_message_response(bytes_data)
+         puts send_message_response
+
+         if ResponseCode::SEND_MESSAGE_SUCCESS == send_message_response['status']
+            @messages.push(@message_variable.value)
+            self.render_messages
+         end
+
          @message_variable.value = ""
       end
    end
