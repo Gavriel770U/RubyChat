@@ -7,6 +7,8 @@ require_relative 'logged_user'
 
 SERVER_PORT = 8888
 
+$users_hash_map = Hash.new
+
 server = TCPServer.new('localhost', SERVER_PORT)
 logged_users = Array.new
 
@@ -43,6 +45,8 @@ loop do
           login_reponse = LoginResponse.new(ResponseCode::LOGIN_SUCCESS)
           logged_users.push(logged_user)
           is_logged = true
+          $users_hash_map[logged_user] = client
+          print $users_hash_map
         else
           login_reponse = LoginResponse.new(ResponseCode::LOGIN_FAILURE)
         end
