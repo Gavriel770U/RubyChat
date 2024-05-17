@@ -23,7 +23,7 @@ class Serializer
   def self.serialize_send_message_request (send_message_request)
     serialized_bytes = Array.new
     serialized_bytes.push(send_message_request.status)
-    json = '{"status": %s, "sender": "%s", "message": %s}' % [send_message_request.status, send_message_request.sender, send_message_request.message]
+    json = '{"status": %s, "sender": "%s", "message": "%s"}' % [send_message_request.status, send_message_request.sender, send_message_request.message]
     serialized_bytes.push(*[json.length].pack('Q').bytes)
     serialized_bytes.push(*json.bytes)
 
