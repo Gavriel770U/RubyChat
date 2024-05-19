@@ -30,6 +30,16 @@ class Serializer
     return serialized_bytes
   end
 
+  def self.serialize_refresh_request (refresh_request)
+    serialized_bytes = Array.new
+    serialized_bytes.push(refresh_request.status)
+    json = '{"status": %s}' % [refresh_request.status]
+    serialized_bytes.push(*[json.length].pack('Q').bytes)
+    serialized_bytes.push(*json.bytes)
+
+    return serialized_bytes
+  end
+
   def self.serialize_logout_request (logout_request)
     serialized_bytes = Array.new
     serialized_bytes.push(logout_request.status)
