@@ -70,6 +70,14 @@ class Serializer
     return serialized_bytes
   end
 
+  def self.serialize_refresh_response (refresh_response)
+    serialized_bytes = Array.new
+    serialized_bytes.push(refresh_response.status)
+    #json = '{"status": %s, "new_messages": }' % [refresh_response.status]
+
+    return serialized_bytes
+  end
+
   def self.serialize_logout_response (logout_response)
     serialized_bytes = Array.new
     serialized_bytes.push(logout_response.status)
