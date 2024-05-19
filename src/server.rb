@@ -8,6 +8,7 @@ require_relative 'logged_user'
 SERVER_PORT = 8888
 
 $users_hash_map = Hash.new
+$messages_for_refresh_map = Hash.new
 
 server = TCPServer.new('localhost', SERVER_PORT)
 logged_users = Array.new
@@ -29,6 +30,8 @@ loop do
     puts "Accepted client"
     is_running = true
     is_logged = false
+    logged_user = nil
+
     while is_running
       bytes_data = SocketUtils.recv(client)
       print "Got: "
@@ -46,6 +49,7 @@ loop do
           logged_users.push(logged_user)
           is_logged = true
           $users_hash_map[logged_user] = client
+          $messages_for_refresh_map[logged_user] = Queue.new
           print $users_hash_map
         else
           login_reponse = LoginResponse.new(ResponseCode::LOGIN_FAILURE)
@@ -59,6 +63,7 @@ loop do
         puts send_message_request
 
         # TODO: implement sending message to all users
+        $messages_for_refresh_map.each_key { |logged_user| $messages_for_refresh_map[logged_user] << send_message_request['message']; puts $messages_for_refresh_map}
 
         send_message_response = SendMessageResponse.new(ResponseCode::SEND_MESSAGE_SUCCESS)
         bytes_data = Serializer.serialize_send_message_response(send_message_response)

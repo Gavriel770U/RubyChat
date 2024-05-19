@@ -12,6 +12,10 @@ SendMessageRequest = Struct.new(:status, :sender, :message) do
 
 end
 
+RefreshRequest = Struct.new(:status) do
+
+end
+
 LogoutRequest = Struct.new(:status, :username) do
 
 end

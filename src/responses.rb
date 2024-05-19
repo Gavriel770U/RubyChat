@@ -13,6 +13,10 @@ SendMessageResponse = Struct.new(:status) do
 
 end
 
+RefreshResponse = Struct.new(:status, :new_messages) do
+
+end
+
 LogoutResponse = Struct.new(:status) do
 
 end
