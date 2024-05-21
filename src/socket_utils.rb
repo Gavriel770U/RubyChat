@@ -1,14 +1,14 @@
 require 'socket'
 
 module SocketUtilsSettings
-  SEND_FALGS = 0
+  SEND_FLAGS = 0
   CODE_BYTES_SIZE = 1
   LENGTH_BYTES_SIZE = 8
 end
 
 class SocketUtils
   def self.send(socket, bytes_data)
-    socket.send(bytes_data.pack('C*'), SocketUtilsSettings::SEND_FALGS)
+    socket.send(bytes_data.pack('C*'), SocketUtilsSettings::SEND_FLAGS)
   end
 
   def self.recv(socket)

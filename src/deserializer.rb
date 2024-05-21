@@ -26,6 +26,14 @@ class Deserializer
     return smr
   end
 
+  def self.deserialize_refresh_request (bytes_data)
+    length = bytes_data[1..8].pack('C*').unpack('Q').first
+    json = JSON.parse(bytes_data[9..9+length-1].pack('C*'))
+    rr = RefreshRequest.new(json['status'])
+
+    return rr
+  end
+
   def self.deserialize_logout_request (bytes_data)
     length = bytes_data[1..8].pack('C*').unpack('Q').first
     json = JSON.parse(bytes_data[9..9+length-1].pack('C*'))
@@ -49,6 +57,14 @@ class Deserializer
     smr = SendMessageResponse.new(json['status'])
 
     return smr
+  end
+
+  def self.deserialize_refresh_response (bytes_data)
+    length = bytes_data[1..8].pack('C*').unpack('Q').first
+    json = JSON.parse(bytes_data[9..9+length-1].pack('C*'))
+    rr = RefreshResponse.new(json['status'], json['new_messages'])
+
+    return rr
   end
 
   def self.deserialize_logout_response (bytes_data)
