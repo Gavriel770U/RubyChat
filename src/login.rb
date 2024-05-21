@@ -12,7 +12,7 @@ class LoginWindow
 
     @root = TkRoot.new(title: "[RubyChat] Login", geometry: "600x400")
     @root.resizable(false, false)
-    @root.protocol("WM_DELETE_WINDOW", proc { self.close })
+    @root.protocol("WM_DELETE_WINDOW", proc { self.destroy })
 
     @login_label = TkLabel.new(@root) do
       text "Login"
@@ -101,6 +101,7 @@ class LoginWindow
 
   def destroy
     @root.destroy
+    @socket.close
   end
 
 end

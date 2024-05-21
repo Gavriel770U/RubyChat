@@ -17,6 +17,6 @@ RefreshRequest = Struct.new(:status) do
 
 end
 
-LogoutRequest = Struct.new(:status, :username) do
+LogoutRequest = Struct.new(:status) do
 
 end
