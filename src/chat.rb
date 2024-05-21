@@ -144,6 +144,15 @@ class Chat
 
    def close
       @root.destroy
+
+      @refresh_thread.exit
+
+      logout_request = LogoutRequest.new(RequestCode::LOGOUT)
+      bytes_data = Serializer.serialize_logout_request(logout_request)
+      SocketUtils.send(@socket, bytes_data)
+
+      bytes_data = SocketUtils.recv(@socket)
+      logout_response = Deserializer.deserialize_logout_response(bytes_data)
       exit
    end
 

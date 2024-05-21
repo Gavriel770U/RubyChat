@@ -35,9 +35,6 @@ loop do
 
     while is_running
       bytes_data = SocketUtils.recv(client)
-      #print "Got: "
-      #puts bytes_data
-      print "First byte (STATUS CODE): ", bytes_data.at(0).class
 
       if RequestCode::LOGIN == bytes_data.at(0)
         login_request = Deserializer.deserialize_login_request(bytes_data)
@@ -101,6 +98,20 @@ loop do
         bytes_data = Serializer.serialize_refresh_response(refresh_response)
         SocketUtils.send(client, bytes_data)
 
+      elsif RequestCode::LOGOUT == bytes_data.at(0)
+        logout_request = Deserializer.deserialize_logout_request(bytes_data)
+        puts logout_request
+
+        is_running = false
+        is_logged = false
+        key_to_delete = :logged_user
+        $users_hash_map.delete(key_to_delete)
+        $messages_for_refresh_map.delete(key_to_delete)
+        logged_users.delete(logged_user)
+
+        logout_response = LogoutResponse.new(ResponseCode::LOGOUT_SUCCESS)
+        bytes_data = Serializer.serialize_logout_response(logout_response)
+        SocketUtils.send(client, bytes_data)
       end
     end
 
