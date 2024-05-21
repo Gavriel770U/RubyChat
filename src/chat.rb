@@ -67,6 +67,32 @@ class Chat
       end
 
       @send_message_button.place('height' => 25, 'width' => 25, 'x' => 380, 'y' => 340)
+
+      @refresh_thread = Thread.new {
+         while true do
+            refresh_request = RefreshRequest::new(RequestCode::REFRESH)
+            puts refresh_request
+            bytes_data = Serializer.serialize_refresh_request(refresh_request)
+            SocketUtils.send(@socket, bytes_data)
+
+            bytes_data = SocketUtils.recv(@socket)
+            refresh_response = Deserializer.deserialize_refresh_response(bytes_data)
+            puts refresh_response
+
+            if ResponseCode::REFRESH_SUCCESS == refresh_response['status']
+               messages = refresh_response['new_messages'].reverse()
+
+
+               while !messages.empty? do
+                  @messages.push(messages.pop)
+               end
+
+               self.render_messages
+            end
+
+            sleep(3)
+         end
+      }
    end
 
    def run

@@ -12,11 +12,11 @@ puts new_lr
 
 
 arr = Array.new
-arr.push("Hello")
-arr.push("Boogo")
-arr.push("Hi")
+#arr.push("Hello")
+#arr.push("Boogo")
+#arr.push("Hi")
 
-#puts arr.to_json.class
+puts JSON.parse(arr.to_json).class
 
 refr = RefreshResponse.new(ResponseCode::REFRESH_SUCCESS, arr)
 print "Original struct: "
@@ -24,4 +24,4 @@ puts refr
 bytes_data = Serializer.serialize_refresh_request(lr)
 new_refr = Deserializer.deserialize_refresh_request(bytes_data)
 print "New struct: "
-puts refr
+puts refr['new_messages']
