@@ -73,7 +73,9 @@ class Serializer
   def self.serialize_refresh_response (refresh_response)
     serialized_bytes = Array.new
     serialized_bytes.push(refresh_response.status)
-    #json = '{"status": %s, "new_messages": }' % [refresh_response.status]
+    json = '{"status": %s, "new_messages": %s}' % [refresh_response.status, refresh_response.new_messages]
+    serialized_bytes.push(*[json.length].pack('Q').bytes)
+    serialized_bytes.push(*json.bytes)
 
     return serialized_bytes
   end

@@ -3,6 +3,7 @@ module ResponseCode
   LOGIN_FAILURE = 12
   SEND_MESSAGE_SUCCESS = 21
   LOGOUT_SUCCESS = 31
+  REFRESH_SUCCESS = 41
 end
 
 LoginResponse = Struct.new(:status) do
