@@ -16,16 +16,16 @@ RubyChat uses it's own protocol of messages which uses different status codes.
 
 | **Value** | **Meaning**                     |
 | --------- | ------------------------------- |
-| 10        | Login Request                   |
-| 11        | Login Success Response          |
-| 12        | Login Failure Response          |
-| 20        | Send Message Request            |
-| 21        | Send Message Success Response   |
-| 30        | Logout Request                  |
-| 31        | Logout Success Response         |
-| 40        | Refresh Request                 |
-| 41        | Refresh Success Response        |
-| 42        | Refresh Failure Response        |
+| **10**    | Login Request                   |
+| **11**    | Login Success Response          |
+| **12**    | Login Failure Response          |
+| **20**    | Send Message Request            |
+| **21**    | Send Message Success Response   |
+| **30**    | Logout Request                  |
+| **31**    | Logout Success Response         |
+| **40**    | Refresh Request                 |
+| **41**    | Refresh Success Response        |
+| **42**    | Refresh Failure Response        |
 
 ____________________________________________________
 
