@@ -82,5 +82,5 @@ ____________________________________________________
 [x] Merge send message networking with GUI
 [x] Create refresh thread of the messages got after login
 [x] Create logout
-[] Get history of messages that were sent before login since server is running
-[] Prettify the messages in GUI
+[ ] Get history of messages that were sent before login since server is running
+[ ] Prettify the messages in GUI
