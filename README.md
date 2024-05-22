@@ -33,33 +33,33 @@ ____________________________________________________
 # Install Dependencies
 ## Windows
 Make sure you have bundler:
-```
+```cmd
 bundler -v
 ```
 
 If you do not have bundler:
-```
+```cmd
 gem install bundler
 ```
 
 When you are done, install the gems needed for the project:
-```
+```cmd
 bundle install
 ```
 
 ## Linux
 Make sure you have bundler:
-```
+```console
 bundler -v
 ```
 
 If you do not have bundler:
-```
+```console
 gem install bundler
 ```
 
 When you are done, install the gems needed for the project:
-```
+```console
 bundle install
 ```
 
