@@ -33,17 +33,17 @@ ____________________________________________________
 # Install Dependencies
 ## Windows
 Make sure you have bundler:
-```bat
+```cmd
 bundler -v
 ```
 
 If you do not have bundler:
-```bat
+```cmd
 gem install bundler
 ```
 
 When you are done, install the gems needed for the project:
-```bat
+```cmd
 bundle install
 ```
 
