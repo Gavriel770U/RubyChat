@@ -1,7 +1,21 @@
 # RubyChat
 Chat in Ruby and Tkinter GUI
 
+
 ____________________________________________________
+
+
+# Table Of Contents
+
+- [Protocol](#protocol)
+- [Install Dependencies](#install-dependencies)
+    - [Windows](#windows)
+    - [Linux](#linux)
+- [Features & TODO](#features--todo)
+
+
+____________________________________________________
+
 
 # Protocol
 RubyChat uses it's own protocol of messages which uses different status codes.
