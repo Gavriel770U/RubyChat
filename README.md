@@ -3,6 +3,18 @@ Chat in Ruby and Tkinter GUI
 
 ____________________________________________________
 
+# Protocol
+RubyChat uses it's own protocol of messages which uses different status codes.
+
+The basic structure of any response or request that can be found in `responses.rb` or `requests.rb`:
+
+| Field      | Status Code | Json Message Length | Json Message Content        | 
+| ---------- | ----------- | ------------------- | --------------------------- |
+| Bytes Size | 1 Bytes     | 8 Bytes             | `Json Message Length` Bytes |
+
+____________________________________________________
+
+
 # Install Dependencies
 ## Windows
 Make sure you have bundler:
