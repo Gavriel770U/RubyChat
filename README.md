@@ -15,6 +15,7 @@ RubyChat uses it's own protocol of messages which uses different status codes.
 **Status Codes Table:**
 
 | **Value** | **Meaning**                     |
+| --------- | ------------------------------- |
 | 10        | Login Request                   |
 | 11        | Login Success Response          |
 | 12        | Login Failure Response          |
