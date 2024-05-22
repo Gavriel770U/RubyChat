@@ -35,7 +35,6 @@ RubyChat uses it's own protocol of messages which uses different status codes.
 | 41        | Refresh Success Response        |
 | --------- | ------------------------------- |
 | 42        | Refresh Failure Response        |
-| --------- | ------------------------------- |
 
 ____________________________________________________
 
