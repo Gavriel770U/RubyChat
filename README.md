@@ -49,17 +49,17 @@ bundle install
 
 ## Linux
 Make sure you have bundler:
-```
+```console
 bundler -v
 ```
 
 If you do not have bundler:
-```
+```console
 gem install bundler
 ```
 
 When you are done, install the gems needed for the project:
-```
+```console
 bundle install
 ```
 
