@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    tk (0.5.0)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  tk
+
+BUNDLED WITH
+   2.5.10
