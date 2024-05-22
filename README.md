@@ -64,3 +64,23 @@ bundle install
 ```
 
 If there are issues with Tkinter try installing Tk or Tcl manually
+
+____________________________________________________
+
+# Features & TODO
+
+[x] Create basic client-server model
+[x] Create multi-threaded server that accepts multiple clients
+[x] Create GUI for Login
+[x] Create GUI for Chat
+[x] Create Responses
+[x] Create Request
+[x] Create Serializer for the requests and responses to json and then to bytes array
+[x] Create Deserializer for the bytes arrays to json to responses and requests
+[x] Create Socket Utils class for easier data sending and receiving process with the responses and requests
+[x] Merge login networking with GUI
+[x] Merge send message networking with GUI
+[x] Create refresh thread of the messages got after login
+[x] Create logout
+[] Get history of messages that were sent before login since server is running
+[] Prettify the messages in GUI
